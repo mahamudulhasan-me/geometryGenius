@@ -57,6 +57,34 @@ for (let btn of btn_DualCommon) {
     operationCreator(serialNum, name, result);
   });
 }
+// Ellipse Operation
+document.getElementById("btn-ellipse").addEventListener("click", function (e) {
+  const name = e.target.parentNode.childNodes[3].innerText;
+  const value1 =
+    e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].value;
+  const value2 =
+    e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
+  const result = parseFloat((Math.PI * value1 * value2).toFixed(2));
+  serialNum++;
+  operationCreator(serialNum, name, result);
+});
+
+// setup input validation
+let allInput = document.querySelectorAll('input[type="number"]');
+for (let input of allInput) {
+  input.addEventListener("keyup", function (e) {
+    if (e.target.value < 0) {
+      Swal.fire({
+        title: "Be Positive!",
+        text: "Please Enter a Positive Number",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+
+      e.target.value = "";
+    }
+  });
+}
 
 // Random Color Generator
 function colorGenerator() {
@@ -74,3 +102,7 @@ for (let item of geometryObjectBody) {
     e.target.style.backgroundColor = "";
   });
 }
+
+document.getElementById("btn_blog").addEventListener("click", function (e) {
+  window.location.replace("./blog/blog.html");
+});
