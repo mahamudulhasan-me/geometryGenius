@@ -8,6 +8,13 @@
     <title>Geometry-Genius</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
     <!-- Header Section Start -->
@@ -249,9 +256,9 @@
           </div>
         </div>
         <!-- Area Calculation Section Start -->
-        <div class="relative">
+        <div class="stri">
           <div
-            class="bg-violet-200 border border-violet-400 rounded-t-lg h-1/2"
+            class="bg-violet-200 border border-violet-400 rounded-t-lg md:h-1/2 md:sticky md:top-[5%]"
           >
             <div class="text-center border-b-2 border-violet-400">
               <p
@@ -260,6 +267,7 @@
                 Area Calculation
               </p>
             </div>
+            <!-- Table body where add calculation result -->
             <div id="calculation-container" class="px-1">
               <table class="w-full text-center">
                 <tbody></tbody>
@@ -269,8 +277,8 @@
         </div>
       </div>
     </main>
-    <!-- Main js  -->
 
+    <!-- Main js  -->
     <script src="./js/main.js"></script>
   </body>
 </html>

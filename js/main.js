@@ -150,13 +150,7 @@ for (let input of allInput) {
   });
 }
 
-// Random Color Generator
-function colorGenerator() {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  return `rgb(${r},${g},${b})`;
-}
+// set random color every geometry items
 const geometryObjectBody = document.querySelectorAll(".geometry-item");
 for (let item of geometryObjectBody) {
   item.addEventListener("mouseenter", function (e) {
@@ -166,7 +160,15 @@ for (let item of geometryObjectBody) {
     e.target.style.backgroundColor = "";
   });
 }
+// Random Color Generator
+function colorGenerator() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`;
+}
 
+// change page location
 document.getElementById("btn_blog").addEventListener("click", function (e) {
   location.href = "./blog/blog.html";
 });
