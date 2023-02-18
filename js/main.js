@@ -1,3 +1,16 @@
+/*
+    Project Name = Geometry Genius
+    Author Name = Mahamudul Hasan
+    Date Created = 2023-02-18
+    ---------------------------
+    Description = In this project the area of various geometry objects are calculated
+                and after the calculation is stored in the calculation area.
+ */
+
+// Serial Number Container
+let serialNum = 0;
+
+// After Calculation This element append in Calculation area
 function operationCreator(serial, objectName, result) {
   const createTr = document.createElement("tr");
   createTr.innerHTML = `
@@ -6,11 +19,16 @@ function operationCreator(serial, objectName, result) {
     <td>${result}cm<sup>2</sup></td>
     <td><button class="bg-violet-500 hover:bg-violet-700 transition-all p-1 my-2 rounded-lg 
      text-white">Convert To m<sup>2</sup></button></td>
-    <td><button><img id='btn_delete' src="./img/delete.png" alt="" /></button></td>`;
+    <td><button id='btn_delete'><img src="./img/delete.png" alt="" /></button></td>`;
   document.querySelector("tbody").appendChild(createTr);
+  // select all delete button
+  const allDeleteBtn = document.querySelectorAll("#btn_delete");
+  for (let btn of allDeleteBtn) {
+    btn.addEventListener("click", function (e) {
+      e.target.parentElement.parentElement.parentElement.remove();
+    });
+  }
 }
-// serial Number incrementor
-let serialNum = 0;
 
 /*This operation for Three common functionalism Object-
 -----------------------------------------------------
@@ -18,63 +36,76 @@ let serialNum = 0;
  2.Rhombus,
  3.Pentagon 
  */
-// select all common operational button by querySelector
-const btn_TripleCommon = document.querySelectorAll(
-  "#btn_triangle-rhombus-pentagon"
-);
-//get value and operation each object
-for (let btn of btn_TripleCommon) {
-  btn.addEventListener("click", function (e) {
-    const name = e.target.parentNode.childNodes[3].innerText;
-    const value1 =
-      e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].value;
-    const value2 =
-      e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
-    if (value1 == "" || value2 == "") {
-      Swal.fire("Please Fill Two Fields");
-    } else {
-      const result = parseFloat((0.5 * value1 * value2).toFixed(2));
-      serialNum++;
-      operationCreator(serialNum, name, result);
-    }
-  });
+function geometryCalculationWith0_5(geometryObjectName) {
+  document
+    .getElementById(geometryObjectName)
+    .addEventListener("click", function (e) {
+      const name = e.target.parentNode.childNodes[3].innerText;
+      const value1 =
+        e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].value;
+      const value2 =
+        e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
+      // check validation
+      if (value1 == "" || value2 == "") {
+        Swal.fire("Please Fill Two Fields");
+      } else {
+        // if valid this operation will execute
+        const result = parseFloat((0.5 * value1 * value2).toFixed(2));
+        serialNum++;
+        operationCreator(serialNum, name, result);
+      }
+    });
 }
+// 1.Triangle
+geometryCalculationWith0_5("btn_triangle");
+// 2.Rhombus
+geometryCalculationWith0_5("btn_rhombus");
+// 3.Pentagon
+geometryCalculationWith0_5("btn_pentagon");
+
 /*This operation for Two common functionalism Object-
 -----------------------------------------------------
  1.Rectangle, 
  2.Parallelogram,
  */
-// select all common operational button by querySelector
-const btn_DualCommon = document.querySelectorAll(
-  "#btn-rectangle_parallelogram"
-);
-//get value and operation each object
-for (let btn of btn_DualCommon) {
-  btn.addEventListener("click", function (e) {
-    const name = e.target.parentNode.childNodes[3].innerText;
-    const value1 =
-      e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].value;
-    const value2 =
-      e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
-    if (value1 == "" || value2 == "") {
-      Swal.fire("Please Fill Two Fields");
-    } else {
-      const result = parseFloat((value1 * value2).toFixed(2));
-      serialNum++;
-      operationCreator(serialNum, name, result);
-    }
-  });
+function geometryCalculationWithouts0_5(geometryObjectName) {
+  document
+    .getElementById(geometryObjectName)
+    .addEventListener("click", function (e) {
+      const name = e.target.parentNode.childNodes[3].innerText;
+      const value1 =
+        e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].value;
+      const value2 =
+        e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
+      // check validation
+      if (value1 == "" || value2 == "") {
+        Swal.fire("Please Fill Two Fields");
+      } else {
+        // if valid this operation will execute
+        const result = parseFloat((value1 * value2).toFixed(2));
+        serialNum++;
+        operationCreator(serialNum, name, result);
+      }
+    });
 }
+// 1.Rectangle
+geometryCalculationWithouts0_5("btn_rectangle");
+// 2.Parallelogram
+geometryCalculationWithouts0_5("btn_parallelogram");
+
 // Ellipse Operation
-document.getElementById("btn-ellipse").addEventListener("click", function (e) {
+document.getElementById("btn_ellipse").addEventListener("click", function (e) {
   const name = e.target.parentNode.childNodes[3].innerText;
   const value1 =
     e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].innerText;
   const value2 =
     e.target.parentNode.childNodes[7].childNodes[1].childNodes[3].innerText;
+
+  // check validation
   if (value1 == "" || value2 == "") {
     Swal.fire("Please Fill Two Fields");
   } else {
+    // if valid this operation will execute
     const result = parseFloat((Math.PI * value1 * value2).toFixed(2));
     serialNum++;
     operationCreator(serialNum, name, result);
@@ -93,12 +124,16 @@ document
   .addEventListener("click", function (e) {
     const value1 = e.target.parentNode.childNodes[1].childNodes[1].value;
     const value2 = e.target.parentNode.childNodes[3].childNodes[1].value;
-    setInnerText("value1", value1);
-    setInnerText("value2", value2);
-    e.target.parentNode.style.display = "none";
+    if (value1 == "" || value2 == "") {
+      Swal.fire("Please Fill Two Fields");
+    } else {
+      setInnerText("value1", value1);
+      setInnerText("value2", value2);
+      e.target.parentNode.style.display = "none";
+    }
   });
 
-// setup input validation
+// check all input validation
 let allInput = document.querySelectorAll('input[type="number"]');
 for (let input of allInput) {
   input.addEventListener("keyup", function (e) {
@@ -135,4 +170,3 @@ for (let item of geometryObjectBody) {
 document.getElementById("btn_blog").addEventListener("click", function (e) {
   location.href = "./blog/blog.html";
 });
-// --------------------------------------

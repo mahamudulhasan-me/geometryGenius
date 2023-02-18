@@ -28,37 +28,90 @@
         </button>
       </div>
     </header>
-    <main class="md:px-[25%] px-2 h-screen pt-10 bg-violet-100">
-      <article class="divide-y divide-violet-500 text-justify">
+    <main class="md:px-[25%] px-2 pt-10 bg-violet-100 pb-10">
+      <article class="divide-y divide-violet-500 text-justify space-y-4">
         <div>
-          <p class="text-xl">
+          <p class="font-bold text-xl mb-3">
             <strong>Question-1:</strong> What is DOM and what is the purpose of
             DOM?
           </p>
           <p>
             <strong>Answer:</strong>
-            DOM is a Document Object Model and Programming Interface for HTML
-            that defines HTML objects, properties, methods and events to get,
-            change, add or delete HTML elements
+            DOM stands for Document Object Model. It is a programming interface
+            through which the structure, style and content of web pages can be
+            changed. That is, a web page can be made interactive through DOM.
+            <br />
+            The purpose of the DOM is to provide a way for programs, such as
+            JavaScript, to access and manipulate the elements and content of a
+            web page. Through DOM we can manipulate data like data insert delete
+            etc without page reload.That is, through DOM, we can easily make a
+            webpage dynamic and create a responsive web application.
           </p>
         </div>
         <div>
-          <p>
+          <p class="font-bold text-xl mb-3">
             <strong>Question-2:</strong> How will you select HTML elements using
             DOM? Name the DOM methods.
           </p>
-          <p><strong>Answer:</strong></p>
-        </div>
-        <div>
-          <p><strong>Question-3:</strong> What is event bubble?</p>
-          <p><strong>Answer:</strong></p>
-        </div>
-        <div>
           <p>
+            <strong>Answer:</strong>
+            To select HTML elements using DOM, we can use a variety of DOM
+            methods. Here are some common DOM methods for selecting elements:
+            <br />
+            <strong> getElementById():</strong> This method selects an element
+            by its id <br />
+
+            <strong>getElementsByClassName():</strong> This method selects
+            elements by their class attribute. <br />
+            <strong>getElementsByTagName():</strong>
+            This method selects elements by their tag name. <br />
+            <strong>querySelector(): </strong>This method selects the first
+            element that matches a CSS selector <br />
+            <strong>querySelectorAll():</strong> This method selects all
+            elements that match a CSS selector <br />
+            <strong>parentElement():</strong> This method selects the parent
+            element of an element. <br />
+            <strong>children():</strong> This method selects the child elements
+            of an element. <br />
+            <strong>nextSibling(): </strong> This method selects the next
+            sibling element of an element. <br />
+            <strong> previousSibling():</strong> This method selects the
+            previous sibling element of an element. <br />
+            The HTML element can be selected through the above methods. When to
+            use any method depends on our work.
+          </p>
+        </div>
+        <div>
+          <p class="font-bold text-xl mb-3">
+            <strong>Question-3:</strong> What is event bubble?
+          </p>
+          <p>
+            <strong>Answer:</strong> Event bubbling is a system in the
+            javascript event model where the event is fired on a nested child
+            element handler that is contained by parent elements. <br />
+            when an event is executed on a component such as a click on a button
+            the event starts at the target element and bubbles up through the
+            parent elements. During this process, any event handlers that stay
+            in their target element container or any of the ancestor elements
+            can be triggered.
+          </p>
+        </div>
+        <div>
+          <p class="font-bold text-xl mb-3">
             <strong>Question-4:</strong> What is a callback function and why
             will you use it?
           </p>
-          <p><strong>Answer:</strong></p>
+          <p>
+            <strong>Answer:</strong>
+            A callback function is a function expression in JavaScript. which
+            acts as an argument to a function and executes itself. That is,
+            callback function is a function that is called back by another
+            function when some event occurs or when a certain task is completed.
+            <br />
+            Callback functions are commonly used in JavaScript, especially when
+            working with asynchronous tasks such as fetching data from a server
+            or performing animations.
+          </p>
         </div>
       </article>
     </main>
