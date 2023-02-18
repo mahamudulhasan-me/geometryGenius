@@ -1,6 +1,3 @@
-document
-  .querySelectorAll("#home")
-  .forEach()
-  .addEventListener("click", function (e) {
-    window.location.replace("../index.html");
-  });
+document.getElementById("home").addEventListener("click", function () {
+  window.location.href = "../index.html";
+});
