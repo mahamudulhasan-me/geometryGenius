@@ -47,7 +47,7 @@ function geometryCalculationWith0_5(geometryObjectName) {
         e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
       // check validation
       if (value1 == "" || value2 == "") {
-        Swal.fire("Please Fill Two Fields");
+        Swal.fire("Please Fill Both Fields");
       } else {
         // if valid this operation will execute
         const result = parseFloat((0.5 * value1 * value2).toFixed(2));
@@ -79,7 +79,7 @@ function geometryCalculationWithouts0_5(geometryObjectName) {
         e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
       // check validation
       if (value1 == "" || value2 == "") {
-        Swal.fire("Please Fill Two Fields");
+        Swal.fire("Please Fill Both Fields");
       } else {
         // if valid this operation will execute
         const result = parseFloat((value1 * value2).toFixed(2));
@@ -103,7 +103,7 @@ document.getElementById("btn_ellipse").addEventListener("click", function (e) {
 
   // check validation
   if (value1 == "" || value2 == "") {
-    Swal.fire("Please Fill Two Fields");
+    Swal.fire("Please Both Two Fields");
   } else {
     // if valid this operation will execute
     const result = parseFloat((Math.PI * value1 * value2).toFixed(2));
@@ -125,7 +125,7 @@ document
     const value1 = e.target.parentNode.childNodes[1].childNodes[1].value;
     const value2 = e.target.parentNode.childNodes[3].childNodes[1].value;
     if (value1 == "" || value2 == "") {
-      Swal.fire("Please Fill Two Fields");
+      Swal.fire("Please Both Two Fields");
     } else {
       setInnerText("value1", value1);
       setInnerText("value2", value2);
