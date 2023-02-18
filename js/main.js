@@ -30,9 +30,13 @@ for (let btn of btn_TripleCommon) {
       e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].value;
     const value2 =
       e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
-    const result = 0.5 * value1 * value2;
-    serialNum++;
-    operationCreator(serialNum, name, result);
+    if (value1 == "" || value2 == "") {
+      Swal.fire("Please Fill Two Fields");
+    } else {
+      const result = parseFloat((0.5 * value1 * value2).toFixed(2));
+      serialNum++;
+      operationCreator(serialNum, name, result);
+    }
   });
 }
 /*This operation for Two common functionalism Object-
@@ -52,22 +56,47 @@ for (let btn of btn_DualCommon) {
       e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].value;
     const value2 =
       e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
-    const result = value1 * value2;
-    serialNum++;
-    operationCreator(serialNum, name, result);
+    if (value1 == "" || value2 == "") {
+      Swal.fire("Please Fill Two Fields");
+    } else {
+      const result = parseFloat((value1 * value2).toFixed(2));
+      serialNum++;
+      operationCreator(serialNum, name, result);
+    }
   });
 }
 // Ellipse Operation
 document.getElementById("btn-ellipse").addEventListener("click", function (e) {
   const name = e.target.parentNode.childNodes[3].innerText;
   const value1 =
-    e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].value;
+    e.target.parentNode.childNodes[7].childNodes[1].childNodes[1].innerText;
   const value2 =
-    e.target.parentNode.childNodes[7].childNodes[3].childNodes[1].value;
-  const result = parseFloat((Math.PI * value1 * value2).toFixed(2));
-  serialNum++;
-  operationCreator(serialNum, name, result);
+    e.target.parentNode.childNodes[7].childNodes[1].childNodes[3].innerText;
+  if (value1 == "" || value2 == "") {
+    Swal.fire("Please Fill Two Fields");
+  } else {
+    const result = parseFloat((Math.PI * value1 * value2).toFixed(2));
+    serialNum++;
+    operationCreator(serialNum, name, result);
+  }
 });
+// Ellipse Value edit operation
+function setInnerText(id, value) {
+  document.getElementById(id).innerText = value;
+}
+document.getElementById("btn_edit").addEventListener("click", function (e) {
+  const editArea = e.target.parentNode.parentNode.nextElementSibling;
+  editArea.style.display = "flex";
+});
+document
+  .getElementById("set_edit_value")
+  .addEventListener("click", function (e) {
+    const value1 = e.target.parentNode.childNodes[1].childNodes[1].value;
+    const value2 = e.target.parentNode.childNodes[3].childNodes[1].value;
+    setInnerText("value1", value1);
+    setInnerText("value2", value2);
+    e.target.parentNode.style.display = "none";
+  });
 
 // setup input validation
 let allInput = document.querySelectorAll('input[type="number"]');
@@ -104,5 +133,6 @@ for (let item of geometryObjectBody) {
 }
 
 document.getElementById("btn_blog").addEventListener("click", function (e) {
-  window.location.replace("./blog/blog.html");
+  location.href = "./blog/blog.html";
 });
+// --------------------------------------
